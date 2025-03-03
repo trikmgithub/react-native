@@ -32,7 +32,7 @@ export default function Login() {
 
           if (result.status === 200) {
             setResponseMessage(result.message)
-            router.replace('/(tabs)')
+            router.replace('/(drawer)')
           } else {
             setResponseMessage(result.message)
           }

@@ -6,18 +6,13 @@ import * as Location from 'expo-location';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function DrawerLayout() {
+  const [location, setLocation] = useState(null);
+
   useEffect(() => {
     (async () => {
       try {
-        // Request location permissions
-        let { status } = await Location.requestForegroundPermissionsAsync();
-        if (status !== 'granted') {
-          console.log('Quyền truy cập vị trí bị từ chối');
-          return;
-        }
-
-        // Get location
         let location = await Location.getCurrentPositionAsync({});
+        setLocation(location);
         
         // Store location in AsyncStorage for access across the app
         await AsyncStorage.setItem('userLocation', JSON.stringify({
@@ -25,7 +20,7 @@ export default function DrawerLayout() {
           longitude: location.coords.longitude
         }));
       } catch (error) {
-        console.log('Lỗi khi lấy vị trí:', error);
+        console.log('Error getting location:', error);
       }
     })();
   }, []);
@@ -35,7 +30,6 @@ export default function DrawerLayout() {
       screenOptions={{
         headerTintColor: '#007AFF',
         drawerActiveTintColor: '#007AFF',
-        headerShown: false,
       }}
     >
       <Drawer.Screen
@@ -61,7 +55,7 @@ export default function DrawerLayout() {
       <Drawer.Screen
         name="my-location"
         options={{
-          drawerLabel: "Vị trí của bạn",
+          drawerLabel: "Vị trí của tôi",
           title: "Vị trí hiện tại",
           drawerIcon: ({ color, size }) => (
             <Ionicons name="location-outline" size={size} color={color} />
@@ -77,7 +71,6 @@ export default function DrawerLayout() {
             <Ionicons name="stats-chart" size={size} color={color} />
           )
         }}
-      />
       />
     </Drawer>
   );

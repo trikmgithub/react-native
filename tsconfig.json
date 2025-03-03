@@ -3,15 +3,16 @@
   "compilerOptions": {
     "strict": true,
     "baseUrl": ".",
+    "jsx": "react-native",
     "paths": {
       "@/*": [
         "src/*"
       ],
       "components/*": [
-        "src/components/*"
+        "@/components/*"
       ],
       "utils/*": [
-        "src/utils/*"
+        "@/utils/*"
       ],
       "context/*": [
         "src/context/*"
