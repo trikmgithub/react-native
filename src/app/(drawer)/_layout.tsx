@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import * as Location from 'expo-location';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { router } from 'expo-router';
 
 export default function DrawerLayout() {
   const [location, setLocation] = useState(null);
@@ -69,6 +70,16 @@ export default function DrawerLayout() {
           title: "Thống kê",
           drawerIcon: ({ color, size }) => (
             <Ionicons name="stats-chart" size={size} color={color} />
+          )
+        }}
+      />
+      <Drawer.Screen
+        name="history-location-login"
+        options={{
+          drawerLabel: "Lịch sử đăng nhập",
+          title: "Lịch sử đăng nhập",
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="time-outline" size={size} color={color} />
           )
         }}
       />

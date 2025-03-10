@@ -78,6 +78,15 @@ export default function DrawerLayout() {
           )
         }}
       />
+      <Drawer.Screen
+        name="history-location-login"
+        options={{
+          drawerLabel: "Thống kê",
+          title: "Thống kê",
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="stats-chart" size={size} color={color} />
+          )
+        }}
       />
     </Drawer>
   );

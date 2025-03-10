@@ -76,7 +76,6 @@ export default function MyLocationScreen() {
         }
       } catch (addrError) {
         console.error('Lỗi khi lấy địa chỉ:', addrError);
-        // Không đặt lỗi chính ở đây vì chúng ta đã có vị trí
       }
     } catch (err: any) {
       console.error('Lỗi khi lấy vị trí:', err);
